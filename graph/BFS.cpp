@@ -35,10 +35,7 @@ class Graph {
         }
         return false;
     }
-
-    bool BFSRecursive() {
-        
-    }
+    
 };
 
 int main() {
