@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <queue>
 using namespace std;
 
 struct TreeNode {
@@ -79,6 +80,19 @@ void inorderIterative(TreeNode* root) {
     }
 }
 
+void levelOrder(TreeNode* root) {
+    if(!root) return;
+    queue<TreeNode*> q;
+    q.push(root);
+    while(!q.empty()) {
+        auto top = q.front();
+        q.pop();
+        cout << top->val << " ";
+        if(top->left) q.push(top->left);
+        if(top->right) q.push(top->right);
+    }
+}
+
 int main() {
     TreeNode *root = new TreeNode(1);
     root->left = new TreeNode(2);
@@ -97,4 +111,6 @@ int main() {
     inorderRecursive(root);
     cout << "\nIterative Inorder: ";
     inorderIterative(root);
+    cout << "\nIterative Level Order: ";
+    levelOrder(root);
 }
